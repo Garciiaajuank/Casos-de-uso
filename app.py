@@ -5,6 +5,7 @@ from sklearn.linear_model import LinearRegression
 import os
 from LogisticRegression import getMetrics
 from RandomForest import getMetricsRF
+import Clustering
 
 app = Flask(__name__)
 
@@ -140,3 +141,8 @@ def exampleRA():
         f1=f1,
         auc=auc
     )
+
+@app.route('/Clustering')
+def clustering():
+    data = Clustering.applyClustering()
+    return str(data["centers"])
